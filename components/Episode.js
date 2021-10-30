@@ -1,5 +1,7 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, useMediaQuery } from "@chakra-ui/react";
 const Episode = ({ title, src }) => {
+  const [isLargerThan855] = useMediaQuery("(min-width: 836px)");
+
   return (
     <Box
       display="flex"
@@ -13,8 +15,9 @@ const Episode = ({ title, src }) => {
         display="flex"
         justifyContent="center"
         color="white"
+        textAlign="center"
         fontFamily="Lobster"
-        fontSize="2rem"
+        fontSize={isLargerThan855 ? "2rem" : "1.3rem"}
       >
         {title}
       </Text>
@@ -22,8 +25,8 @@ const Episode = ({ title, src }) => {
         as="iframe"
         pt="10px"
         title={title}
-        w="660px"
-        h="400px"
+        w={isLargerThan855 ? "660px" : "350px"}
+        h={isLargerThan855 ? "400px" : "200px"}
         src={src}
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

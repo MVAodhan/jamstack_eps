@@ -1,9 +1,10 @@
 import Head from "next/head";
-import { Box, Image, Text, AspectRatio } from "@chakra-ui/react";
+import { Box, Text, AspectRatio, useMediaQuery } from "@chakra-ui/react";
 
 import Episode from "../components/Episode";
 
 export default function Home() {
+  const [isLargerThan855] = useMediaQuery("(min-width: 836px)");
   return (
     <Box
       style={{ margin: 0, boxSizing: "borderBox", padding: 0 }}
@@ -18,7 +19,11 @@ export default function Home() {
 
       <AspectRatio as="header" minW="100vw" ratio={5 / 1}>
         <Box bgImage="/jamstack-bg.svg" bgRepeat="no-repeat" bgSize="cover">
-          <Text color="white" fontFamily="Lobster" fontSize="3rem">
+          <Text
+            color="white"
+            fontFamily="Lobster"
+            fontSize={isLargerThan855 ? "3rem" : "1.5rem"}
+          >
             JamstackConf x Learn with Jason
           </Text>
         </Box>

@@ -1,10 +1,19 @@
 import Head from "next/head";
+import { useState, useEffect } from "react";
 import { Box, Text, AspectRatio, useMediaQuery } from "@chakra-ui/react";
 
 import Episode from "../components/Episode";
 
 export default function Home() {
-  const [isLargerThan855] = useMediaQuery("(min-width: 836px)");
+  const [isLargerThan855, setIsLargerThan855] = useState(true);
+  const [mediaQuery] = useMediaQuery("(min-width: 836px)");
+  console.log(isLargerThan855);
+
+  useEffect(() => {
+    if (mediaQuery !== isLargerThan855) {
+      setIsLargerThan855(mediaQuery);
+    }
+  }, [mediaQuery]);
   return (
     <Box
       style={{ margin: 0, boxSizing: "borderBox", padding: 0 }}
@@ -40,22 +49,27 @@ export default function Home() {
           <Episode
             title="Custom Cart With Shopify Storefront API"
             src="https://www.youtube.com/embed/FJOJmKFngLI"
+            isLargerThan855={isLargerThan855}
           />
           <Episode
             title="Custom Discount Codes With Fauna, Tito, and Shopify"
             src="https://www.youtube.com/embed/Iu87j6Mxfvw"
+            isLargerThan855={isLargerThan855}
           />
           <Episode
             title="Custom Command Bar Using Autocomplete With Algolia"
             src="https://www.youtube.com/embed/_EY1yy4Whes"
+            isLargerThan855={isLargerThan855}
           />
           <Episode
             title="Send Transactional Emails With Twilio SendGrid"
             src="https://www.youtube.com/embed/EYdvyc4xz24"
+            isLargerThan855={isLargerThan855}
           />
           <Episode
             title="Monitor Errors and Performance With Sentry"
             src="https://www.youtube.com/embed/iP6RAlqJDvU"
+            isLargerThan855={isLargerThan855}
           />
         </Box>
       </Box>

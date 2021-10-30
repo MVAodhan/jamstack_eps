@@ -1,7 +1,5 @@
 import { Box, Text, useMediaQuery } from "@chakra-ui/react";
-const Episode = ({ title, src }) => {
-  const [isLargerThan855] = useMediaQuery("(min-width: 836px)");
-
+const Episode = ({ title, src, isLargerThan855 }) => {
   return (
     <Box
       display="flex"
